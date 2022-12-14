@@ -7,8 +7,16 @@ const app = express();
 const PORT = 8000;
 
 //middlewares
-app.use(cors());
-app.use(morgan());
+app.use(express.json());
+app.use(cors()); //allow cross origin access from different server frontend app
+app.use(morgan("dev")); //log all the server request
+
+//db connection
+import { connectDB } from "./src/config/dbConfig.js";
+connectDB();
+//router
+import userRouter from "./src/routers/userRouter.js";
+app.use("/users", userRouter);
 
 //request handler
 app.use("/", (req, res) => {

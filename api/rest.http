@@ -1,0 +1,23 @@
+### get all users
+
+GET http://127.0.0.1:8000/users
+
+### post all users
+POST http://127.0.0.1:8000/users
+Content-Type: application/json
+
+{
+    "fName": "Arun",
+    "lName": "bhaiya",
+    "email":"arun@gmail.com",
+    "password": "1234546"
+}
+
+### Update a user
+PUT http://127.0.0.1:8000/users
+Content-Type: application/json
+
+{
+    "_id": "Arun",
+    "password": "1234546"
+}
