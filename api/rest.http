@@ -18,6 +18,9 @@ PUT http://127.0.0.1:8000/users
 Content-Type: application/json
 
 {
-    "_id": "Arun",
-    "password": "1234546"
+    "_id": "6393d66eb1d103a8bcbb8dd9",
+    "password": "okchanged"
 }
+
+### delete single user by ID
+DELETE http://127.0.0.1:8000/users/639999536203e17e7431a85a

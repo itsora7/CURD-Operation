@@ -8,7 +8,7 @@ import {
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
   try {
     //get all data from db and return to the client
     const users = await gettUsers();
@@ -38,9 +38,12 @@ router.post("/", async (req, res) => {
           message: "Unable to create user, Please try again later",
         });
   } catch (error) {
-    console.log(error);
+    let message = error.message;
+    if (message.includes("E11000 duplicate key error collection")) {
+      message = "There is another user already using this email.";
+    }
     res.json({
-      status: "success",
+      status: "error",
       message: error.message,
     });
   }
